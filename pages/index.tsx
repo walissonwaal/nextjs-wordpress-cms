@@ -31,12 +31,15 @@ export default function Index({ allPosts: { edges }, pageTitles, preview }) {
           />
         )}
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+
         <h1>Páginas criadas no wordpress:</h1>
+
         {morePages.length > 0 && morePages.map(pageTitle => (
           <li key={pageTitle.node.uri}>
             <a href={`/pages/${pageTitle.node.uri}`}>{pageTitle.node.title}</a>
           </li>
         ))}
+        
       </Container>
     </Layout>
   )

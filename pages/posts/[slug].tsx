@@ -18,9 +18,13 @@ export default function Post({ post, posts, preview }) {
   const router = useRouter()
   const morePosts = posts?.edges
 
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+  // const typeOfPostContent = typeof post
+  // console.log('typeof post: ', typeOfPostContent)
+  // // console.log(post.content)
 
   return (
     <Layout preview={preview}>
@@ -33,7 +37,7 @@ export default function Post({ post, posts, preview }) {
             <article>
               <Head>
                 <title>
-                  {`${post.title} | Next.js Blog Example with ${CMS_NAME}`}
+                  {`${post.title} | Next.js com ${CMS_NAME}`}
                 </title>
                 <meta
                   property="og:image"

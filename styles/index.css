@@ -102,3 +102,37 @@
 .wp-block-media-text {
   @apply grid grid-cols-2 gap-4;
 }
+
+/* Table */
+/* Estilização básica para a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilização para os cabeçalhos da tabela */
+thead {
+  background-color: #f2f2f2;
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+}
+
+/* Estilização para as células do corpo da tabela */
+tbody td {
+  padding: 12px;
+  border-top: 1px solid #ddd;
+}
+
+/* Estilização para as células alternadas do corpo da tabela */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.wp-element-caption {
+  text-align: start;
+}

@@ -27,6 +27,97 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   return json.data
 }
 
+// PAGE
+export async function getPageBySlug(slug) {
+  const data = await fetchAPI(
+    `
+    query PageBySlug($slug: String!) {
+      pageBy(uri: $slug) {
+        title
+        content
+        uri
+      }
+    }
+    `,
+    {
+      variables: { slug },
+    }
+  );
+  
+  return data.pageBy;
+}
+
+export async function getAllPagesWithSlug() {
+  const data = await fetchAPI(`
+    {
+      pages(first: 10000) {
+        edges {
+          node {
+            uri
+          }
+        }
+      }
+    }
+  `);
+  
+  return data?.pages;
+}
+
+export async function getAllPagesForHome() {
+  const data = await fetchAPI(
+    `
+    query AllPages {
+      pages(first: 20) {
+        edges {
+          node {
+            title
+            excerpt
+            uri
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    `
+  );
+  
+  return data?.pages;
+}
+
+export async function getAllPageTitles() {
+  const data = await fetchAPI(`
+    {
+      pages(first: 10000) {
+        edges {
+          node {
+            title
+            uri
+          }
+        }
+      }
+    }
+  `);
+  
+  return data?.pages;
+}
+
+
+
+// POST
 export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
     `

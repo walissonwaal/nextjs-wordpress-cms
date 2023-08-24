@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { getPageBySlug, getAllPagesWithSlug } from '../../lib/api'; // Coloque o caminho correto para as funções
+import { getPageBySlug, getAllPagesWithSlug } from '../../lib/api';
 
 export default function Page({ page }) {
   const router = useRouter();
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true, // Ou false, dependendo da sua preferência
+    fallback: true,
   };
 }
 
@@ -36,6 +36,6 @@ export async function getStaticProps({ params }) {
     props: {
       page,
     },
-    revalidate: 3600, // Tempo em segundos para revalidar a página (1 hora neste exemplo)
+    revalidate: 3600, // 1 hr para revalidação
   };
 }
